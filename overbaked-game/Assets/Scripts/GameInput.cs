@@ -18,7 +18,10 @@ public class GameInput : MonoBehaviour
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        OnInteractAction?.Invoke(this, EventArgs.Empty);
+        if(OnInteractAction != null)
+        {
+            OnInteractAction(this, EventArgs.Empty);
+        }        
     }
 
     public Vector2 GetMovementVectorNormalized()
