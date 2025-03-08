@@ -25,11 +25,36 @@ public class ClearCounter : BaseCounter
         else
         {
             //counter has object
-            if(!player.HasKitchenObject())
+            if(player.HasKitchenObject())
+            {
+                //player has object
+                if(player.GetKitchenObject().TryGetBowl(out BowlKitchenObject bowlKitchenObject))
+                {
+                    //player has a bowl
+                    if (bowlKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        GetKitchenObject().DestroySelf();
+                    }
+                }
+                else
+                {
+                    //player does not have a bowl but something else
+                    if(GetKitchenObject().TryGetBowl(out bowlKitchenObject))
+                    {
+                        // Counter has a bowl
+                        if(bowlKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
+                        {
+                            player.GetKitchenObject().DestroySelf();
+                        }
+                    }
+                }
+            }
+            else
             {
                 //player does not have object
                 GetKitchenObject().SetKitchenObjectParent(player);
-                //player pick up object
+                //player picks up object
+                
             }
         }
     }

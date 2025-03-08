@@ -42,6 +42,20 @@ public class KitchenObject : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public bool TryGetBowl(out BowlKitchenObject bowlKitchenObject)
+    {
+        if (this is BowlKitchenObject)
+        {
+            bowlKitchenObject = this as BowlKitchenObject;
+            return true;
+        }
+        else
+        {
+            bowlKitchenObject = null;
+            return false;
+        }
+    }
+
     public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
     {
         if(kitchenObjectSO != null&& kitchenObjectParent != null)
