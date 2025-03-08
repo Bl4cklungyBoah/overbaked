@@ -45,6 +45,19 @@ public class DoughCounter : BaseCounter, IHasProgress
                 GetKitchenObject().SetKitchenObjectParent(player);
                 // player pick up object
             }
+            else
+            {
+                //player has object
+                if (player.GetKitchenObject().TryGetBowl(out BowlKitchenObject bowlKitchenObject))
+                {
+                    //player has a bowl
+                    if (bowlKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        GetKitchenObject().DestroySelf();
+                    };
+
+                }
+            }
         }
     }
 
