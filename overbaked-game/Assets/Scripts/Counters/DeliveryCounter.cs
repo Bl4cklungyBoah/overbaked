@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,12 @@ public class DeliveryCounter : BaseCounter
 {
 
     [SerializeField] KitchenObjectSO targetKitchenObjectSO;
+
+    public event EventHandler<OnBreadDeliveredEventArgs> OnBreadDelivered;
+    public class OnBreadDeliveredEventArgs : EventArgs
+    {
+
+    }
 
     public override void Interact(Player player)
     {
@@ -18,6 +25,7 @@ public class DeliveryCounter : BaseCounter
             {
                 //only accepts bowls
                 Debug.Log("bread delivered");
+                OnBreadDelivered?.Invoke(this, new OnBreadDeliveredEventArgs { });
                 player.GetKitchenObject().DestroySelf();
             }
             else

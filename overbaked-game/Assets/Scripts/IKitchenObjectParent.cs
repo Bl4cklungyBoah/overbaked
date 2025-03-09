@@ -13,7 +13,7 @@ public interface IKitchenObjectParent
     public KitchenObject GetKitchenObject();
 
 
-    public void ClearKichenObject();
+    public void ClearKitchenObject();
 
 
     public bool HasKitchenObject();
