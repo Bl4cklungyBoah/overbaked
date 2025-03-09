@@ -18,7 +18,6 @@ public class BowlCompleteVisual : MonoBehaviour
 
     private void Start()
     {
-
         bowlKitchenObject.OnIngredientAdded += BowlKitchenObject_OnIngredientAdded;
 
         foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList)

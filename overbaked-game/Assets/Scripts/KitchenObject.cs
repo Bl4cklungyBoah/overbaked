@@ -56,6 +56,7 @@ public class KitchenObject : MonoBehaviour
         }
     }
 
+
     public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
     {
         if(kitchenObjectSO != null&& kitchenObjectParent != null)

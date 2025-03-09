@@ -379,6 +379,7 @@
 "Assets/Scripts/Counters/BowlCounterVisual.cs"
 "Assets/Scripts/Counters/ClearCounter.cs"
 "Assets/Scripts/Counters/ContainerCounter.cs"
+"Assets/Scripts/Counters/DeliveryCounter.cs"
 "Assets/Scripts/Counters/DoughCounter.cs"
 "Assets/Scripts/Counters/OvenCounter.cs"
 "Assets/Scripts/Counters/TrashCounter.cs"

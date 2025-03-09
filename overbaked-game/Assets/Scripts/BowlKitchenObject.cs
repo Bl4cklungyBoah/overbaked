@@ -13,6 +13,7 @@ public class BowlKitchenObject : KitchenObject
 
 
     [SerializeField] private List<KitchenObjectSO> validKitchenObjectSOList;
+    [SerializeField] private KitchenObjectSO bowlCompleteSO;
     private List<KitchenObjectSO> kitchenObjectSOList;
 
     private void Awake()
@@ -39,8 +40,34 @@ public class BowlKitchenObject : KitchenObject
             {
                 kitchenObjectSO = kitchenObjectSO
             });
-
+            if (IsBowlFilled())
+            {
+                //if the bowl is filled
+                
+                DestroySelf();
+                SpawnKitchenObject(bowlCompleteSO, this.GetKitchenObjectParent());
+            }
             return true;
         }
     }
+
+    private bool IsBowlFilled()
+    {
+        HashSet<KitchenObjectSO> currentIngredients = new HashSet<KitchenObjectSO>(kitchenObjectSOList);
+        HashSet<KitchenObjectSO> requiredIngredients = new HashSet<KitchenObjectSO>(validKitchenObjectSOList);
+
+        if(currentIngredients.SetEquals(requiredIngredients))
+        {
+            
+            Debug.Log("all ingredients aquired");
+            return true;
+        }
+        else
+        {
+            Debug.Log("not all ingredients aquired");
+            return false;
+        }
+    }
+
+    
 }
